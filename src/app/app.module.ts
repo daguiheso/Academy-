@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+// Material
+import { MaterialModule } from './material.module';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -12,6 +15,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     AppRoutingModule
   ],
   providers: [],
