@@ -1,0 +1,7 @@
+export class Subject {
+	constructor(
+		public name: string,
+		public createdAt?: Date
+	) { }
+
+}

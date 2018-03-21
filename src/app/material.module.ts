@@ -38,6 +38,8 @@ import {
 } from '@angular/material';
 
 const modules = [
+	BrowserAnimationsModule,
+	NoopAnimationsModule,
 	MatAutocompleteModule,
 	MatButtonModule,
 	MatButtonToggleModule,

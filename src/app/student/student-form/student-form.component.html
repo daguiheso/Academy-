@@ -1,0 +1,45 @@
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="form">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Nombre"
+      type="text"
+      formControlName="firstName"
+      id="firstName">
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Apellido"
+      type="text"
+      formControlName="lastName"
+      id="lastName">
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Documento"
+      type="number"
+      formControlName="documentNumber"
+      id="documentNumber">
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    placeholder="Email"
+    type="email"
+    formControlName="email"
+    id="email">
+  </mat-form-field>
+  <mat-form-field class="selected">
+    <input
+      matInput
+      placeholder="Edad"
+      type="number"
+      formControlName="age"
+      id="age">
+  </mat-form-field>
+  <div class="form__bottom">
+    <button type="submit" mat-raised-button color="accent">Crear estudiante</button>
+  </div>
+</form>
