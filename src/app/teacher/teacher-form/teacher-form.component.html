@@ -1,6 +1,6 @@
 <div class="box">
-  <h2 class="title">Crear estudiante</h2>
-  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="form">
+  <h2 class="title">Crear profesor</h2>
+  <form [formGroup]="teacherForm" (ngSubmit)="onSubmit()" class="form">
     <mat-form-field>
       <input matInput placeholder="Nombre" type="text" formControlName="firstName" id="firstName">
     </mat-form-field>
@@ -17,10 +17,10 @@
       <input matInput placeholder="Edad" type="number" formControlName="age" id="age">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Celular" type="number" formControlName="cell" id="cell">
+      <input matInput placeholder="Especialidad" type="text" formControlName="specialty" id="specialty">
     </mat-form-field>
     <div class="form__bottom">
-      <button type="submit" mat-raised-button color="accent">Crear estudiante</button>
+      <button type="submit" mat-raised-button color="accent">Crear profesor</button>
     </div>
   </form>
 </div>

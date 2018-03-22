@@ -1,39 +1,39 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { Student } from '../student.model';
+import { Teacher } from '../teacher.model';
 
-const stud = new Student(
-  'Daniel',
-  'Hernández',
-  1024544253,
-  'daguiheso@test.com',
-  22,
-  3116710256,
+const teach = new Teacher(
+  'Claudia',
+  'Soler',
+  10256874,
+  'claudia@gmail.com',
+  35,
+  'Matematicas',
   new Date()
 );
 
 @Component({
-  selector: 'app-student-list',
-  templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.scss']
+  selector: 'app-teacher-list',
+  templateUrl: './teacher-list.component.html',
+  styleUrls: ['./teacher-list.component.scss']
 })
 
-export class StudentListComponent implements OnInit, AfterViewInit {
+export class TeacherListComponent implements OnInit {
 
-  students: Student[] = new Array(10).fill(stud);
+  teachers: Teacher[] = new Array(10).fill(teach);
 
-  // Config students table
-  studentColumns = [
+  // Config teachers table
+  teacherColumns = [
     'firstName',
     'lastName',
     'documentNumber',
     'email',
     'age',
-    'cell',
+    'specialty',
     'createdAt'
   ];
 
-  dataStudents = new MatTableDataSource();
+  dataTeachers = new MatTableDataSource();
   isLoadingStudents = true;
   currentRowSelect: any;
   currentRowSelectData: any = {};
@@ -47,16 +47,16 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataStudents = new MatTableDataSource(this.students);
-    this.dataStudents.paginator = this.paginator;
-    this.dataStudents.sort = this.sort;
+    this.dataTeachers = new MatTableDataSource(this.teachers);
+    this.dataTeachers.paginator = this.paginator;
+    this.dataTeachers.sort = this.sort;
     this.isLoadingStudents = false;
   }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
-    this.dataStudents.filter = filterValue;
+    this.dataTeachers.filter = filterValue;
   }
 
   selectRow(index, data) {

@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Student } from '../student.model';
+import { Teacher } from '../teacher.model';
+
 
 @Component({
-  selector: 'app-student-form',
-  templateUrl: './student-form.component.html',
-  styleUrls: ['./student-form.component.scss']
+  selector: 'app-teacher-form',
+  templateUrl: './teacher-form.component.html',
+  styleUrls: ['./teacher-form.component.scss']
 })
 
-export class StudentFormComponent implements OnInit {
+export class TeacherFormComponent implements OnInit {
 
-  studentForm: FormGroup;
+  teacherForm: FormGroup;
 
   constructor() { }
 
   ngOnInit() {
-    this.studentForm = new FormGroup({
+    this.teacherForm = new FormGroup({
       firstName: new FormControl(null, [
         Validators.required
       ]),
@@ -32,17 +33,17 @@ export class StudentFormComponent implements OnInit {
       age: new FormControl(null, [
         Validators.required
       ]),
-      cell: new FormControl(null, [
+      specialty: new FormControl(null, [
         Validators.required
       ]),
     })
   }
 
   onSubmit() {
-    if (this.studentForm.valid) {
-      const { firstName, lastName, documentNumber, email, age } = this.studentForm.value;
-      const student = new Student(firstName, lastName, documentNumber, email, age, new Date());
-      console.log(student);
+    if (this.teacherForm.valid) {
+      const { firstName, lastName, documentNumber, email, age, specialty } = this.teacherForm.value;
+      const teacher = new Teacher(firstName, lastName, documentNumber, email, age, specialty, new Date());
+      console.log(teacher);
     }
   }
 

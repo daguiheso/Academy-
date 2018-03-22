@@ -1,7 +1,6 @@
-import { IStudent } from "../interfaces";
-import { Subject } from "../subject/subject.model";
+import { ITeacher } from "../interfaces";
 
-export class Student implements IStudent {
+export class Teacher implements ITeacher {
 
 	_id?: string;
 	firstName: string;
@@ -9,9 +8,8 @@ export class Student implements IStudent {
 	documentNumber: number;
 	email: string;
 	age: number;
-	cell: number;
+	specialty: string;
 	createdAt?: Date;
-	subjects: Subject[];
 
 	constructor(
 		firstName: string,
@@ -19,7 +17,7 @@ export class Student implements IStudent {
 		documentNumber: number,
 		email: string,
 		age: number,
-		cell: number,
+		specialty: string,
 		createdAt?: Date
 	) {
 		this._id = '1';
@@ -28,8 +26,7 @@ export class Student implements IStudent {
 		this.documentNumber = documentNumber;
 		this.email = email;
 		this.age = age;
-		this.cell = cell;
+		this.specialty = specialty;
 		this.createdAt = createdAt;
-		this.subjects = [];
 	}
 }

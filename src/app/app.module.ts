@@ -12,12 +12,16 @@ import 'hammerjs';
 
 import { StudentFormComponent } from './student/student-form/student-form.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
+import { TeacherFormComponent } from './teacher/teacher-form/teacher-form.component';
+import { TeacherListComponent } from './teacher/teacher-list/teacher-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentFormComponent,
     StudentListComponent,
+    TeacherFormComponent,
+    TeacherListComponent,
   ],
   imports: [
     BrowserModule,

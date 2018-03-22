@@ -4,16 +4,16 @@
     <i (click)="goToEdit()" class="material-icons">mode_edit</i>
     <i (click)="delete()" class="material-icons">delete</i>
   </nav>
-  <h2 class="title">Estudiantes</h2>
+  <h2 class="title">Profesores</h2>
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 
-  <div class="tableContainer mat-elevation-z3 students">
+  <div class="tableContainer mat-elevation-z3 teachers">
     <div class="loading-shade" *ngIf="isLoadingResults">
       <mat-spinner></mat-spinner>
     </div>
-    <mat-table [dataSource]="dataStudents" matSort>
+    <mat-table [dataSource]="dataTeachers" matSort>
       <ng-container matColumnDef="firstName">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
@@ -34,17 +34,17 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header> Edad </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.age}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="cell">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Celular </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.cell}} </mat-cell>
+      <ng-container matColumnDef="specialty">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Especialidad </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.specialty}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="createdAt">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Creado </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.createdAt | date:'longDate'}} </mat-cell>
       </ng-container>
 
-      <mat-header-row *matHeaderRowDef="studentColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: studentColumns; let i = index" (click)="selectRow(i, row)" [ngClass]="{ active : i == currentRowSelect}"></mat-row>
+      <mat-header-row *matHeaderRowDef="teacherColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: teacherColumns; let i = index" (click)="selectRow(i, row)" [ngClass]="{ active : i == currentRowSelect}"></mat-row>
     </mat-table>
   </div>
   <mat-paginator [pageSizeOptions]="[5, 10, 50, 100]"></mat-paginator>
