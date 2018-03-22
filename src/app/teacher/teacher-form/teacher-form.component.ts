@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Teacher } from '../teacher.model';
 
-
 @Component({
   selector: 'app-teacher-form',
   templateUrl: './teacher-form.component.html',

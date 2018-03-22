@@ -1,0 +1,30 @@
+.form {
+  position: relative;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	border: 1px solid #c7c5c5;
+	padding: 40px 60px;
+	align-items: flex-start;
+	.mat-form-field {
+		width: 48.5%;
+		min-width: 250px;
+		&:last-child {
+			margin-right: auto;
+		}
+	}
+	&__bottom {
+		width: 100%;
+		margin-top: 25px;
+	}
+	@media screen and (min-width: 1400px) {
+		.mat-form-field {
+			width: 32%;
+		}
+	}
+	@media screen and (max-width: 767px) {
+		.mat-form-field {
+			width: 100%;
+		}
+	}
+}
