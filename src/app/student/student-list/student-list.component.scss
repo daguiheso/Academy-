@@ -1,0 +1,63 @@
+
+
+.tableContainer {
+  &.students {
+    min-height: 40vh;
+    .mat-table {
+      > .mat-header-row, > .mat-row {
+        cursor: pointer;
+        &.active {
+          background: #673ab7 !important;
+          .mat-header-cell, .mat-cell {
+            background: #673ab7 !important;
+            color: white !important;
+          }
+        }
+      }
+    }
+  }
+}
+.mat-table {
+  width: 100%;
+  > .mat-header-row, > .mat-row {
+    display: flex;
+    padding: 0;
+    border: none;
+    &:hover {
+      background: #efefef;
+      .mat-header-cell, .mat-cell {
+        background: #efefef;
+      }
+    }
+    > .mat-header-cell, > .mat-cell {
+      // flex: 0 0 150px;
+      display: flex;
+      justify-content: center;
+      height: 48px;
+      text-align: center;
+      font-size: .8em;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      &:hover {
+        background: #efefef;
+      }
+    }
+  }
+}
+
+
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+

@@ -5,7 +5,7 @@ export class Student {
 	_id?: string;
 	firstName: string;
 	lastName: string;
-	documentNumber: string;
+	documentNumber: number;
 	email: string;
 	age: number;
 	createdAt?: Date;
@@ -14,7 +14,7 @@ export class Student {
 	constructor(
 		firstName: string,
 		lastName: string,
-		documentNumber: string,
+		documentNumber: number,
 		email: string,
 		age: number,
 		createdAt?: Date
