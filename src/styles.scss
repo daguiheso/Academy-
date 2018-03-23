@@ -16,7 +16,8 @@ input {
 }
 
 .box {
-	position: relative;
+  position: relative;
+  margin-top: 40px;
 	&__nav {
 		position: fixed;
 		left: 0;
@@ -60,7 +61,7 @@ input {
 
 .mat {
   &-drawer {
-    width: 250px;
+    width: 150px;
   }
   &-form-field {
     width: 100%;
