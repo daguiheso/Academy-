@@ -1,14 +1,14 @@
 .form {
   position: relative;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	flex-wrap: wrap;
 	border: 1px solid #c7c5c5;
 	padding: 40px 60px;
 	align-items: flex-start;
 	.mat-form-field {
-		width: 48.5%;
-		min-width: 250px;
+		width: 47%;
+		margin: 0 1.5%;
 		&:last-child {
 			margin-right: auto;
 		}
