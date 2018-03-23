@@ -20,10 +20,10 @@ export class Student implements IStudent {
 		email: string,
 		age: number,
 		cell: number,
-		createdAt?: Date
+		createdAt?: Date,
+		_id?: string
 	) {
-		let id = new Date()
-		this._id = id.getTime().toString();
+		this._id = _id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.documentNumber = documentNumber;

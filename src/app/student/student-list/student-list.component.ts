@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 import { Student } from '../student.model';
 
 @Component({
@@ -31,7 +32,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
+  constructor(private router: Router,) {
     this.students = JSON.parse(localStorage.getItem('students')) || [];
   }
 
@@ -54,6 +55,10 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   selectRow(index, data) {
     this.currentRowSelect = index;
     this.currentRowSelectData = data;
+  }
+
+  goToEdit() {
+    this.router.navigate([`students/${this.currentRowSelectData._id}/update`]);
   }
 
 }
