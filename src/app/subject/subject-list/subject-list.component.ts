@@ -2,14 +2,6 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Subject } from '../subject.model';
 
-const sub = new Subject(
-  null,
-  'Matematicas I',
-  4,
-  false,
-  new Date()
-);
-
 @Component({
   selector: 'app-subject-list',
   templateUrl: './subject-list.component.html',
@@ -18,7 +10,7 @@ const sub = new Subject(
 
 export class SubjectListComponent implements OnInit, AfterViewInit {
 
-  subjects: Subject[] = new Array(10).fill(sub);
+  subjects: Subject[] = [];
 
   // Config subjects table
   subjectColumns = [
@@ -36,7 +28,9 @@ export class SubjectListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+  constructor() {
+    this.subjects = JSON.parse(localStorage.getItem('subjects')) || [];
+  }
 
   ngOnInit() {
   }

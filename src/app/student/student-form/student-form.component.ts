@@ -11,8 +11,11 @@ import { Student } from '../student.model';
 export class StudentFormComponent implements OnInit {
 
   studentForm: FormGroup;
+  students: Student[] = [];
 
-  constructor() { }
+  constructor() {
+    this.students = JSON.parse(localStorage.getItem('students')) || [];
+  }
 
   ngOnInit() {
     this.studentForm = new FormGroup({
@@ -42,7 +45,8 @@ export class StudentFormComponent implements OnInit {
     if (this.studentForm.valid) {
       const { firstName, lastName, documentNumber, email, age, cell } = this.studentForm.value;
       const student = new Student(firstName, lastName, documentNumber, email, age, cell, new Date());
-      console.log(student);
+      this.students.push(student);
+      localStorage.setItem('students', JSON.stringify(this.students));
     }
   }
 

@@ -11,8 +11,11 @@ import { Subject } from '../subject.model';
 export class SubjectFormComponent implements OnInit {
 
   subjectForm: FormGroup;
+  subjects: Subject[];
 
-  constructor() { }
+  constructor() {
+    this.subjects = JSON.parse(localStorage.getItem('subjects')) || [];
+  }
 
   ngOnInit() {
     this.subjectForm = new FormGroup({
@@ -32,7 +35,8 @@ export class SubjectFormComponent implements OnInit {
     if (this.subjectForm.valid) {
       const { name, credits, dependency } = this.subjectForm.value;
       const subject = new Subject(null, name, credits, dependency, new Date());
-      console.log(subject);
+      this.subjects.push(subject);
+      localStorage.setItem('subjects', JSON.stringify(this.subjects));
     }
   }
 

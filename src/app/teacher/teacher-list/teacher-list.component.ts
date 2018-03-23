@@ -2,16 +2,6 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Teacher } from '../teacher.model';
 
-const teach = new Teacher(
-  'Claudia',
-  'Soler',
-  10256874,
-  'claudia@gmail.com',
-  35,
-  'Matematicas',
-  new Date()
-);
-
 @Component({
   selector: 'app-teacher-list',
   templateUrl: './teacher-list.component.html',
@@ -20,7 +10,7 @@ const teach = new Teacher(
 
 export class TeacherListComponent implements OnInit {
 
-  teachers: Teacher[] = new Array(10).fill(teach);
+  teachers: Teacher[] = [];
 
   // Config teachers table
   teacherColumns = [
@@ -41,7 +31,9 @@ export class TeacherListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+  constructor() {
+    this.teachers = JSON.parse(localStorage.getItem('teachers')) || [];
+  }
 
   ngOnInit() {
   }

@@ -22,7 +22,8 @@ export class Student implements IStudent {
 		cell: number,
 		createdAt?: Date
 	) {
-		this._id = '1';
+		let id = new Date()
+		this._id = id.getTime().toString();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.documentNumber = documentNumber;

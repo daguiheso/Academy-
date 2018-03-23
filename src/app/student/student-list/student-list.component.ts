@@ -2,16 +2,6 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Student } from '../student.model';
 
-const stud = new Student(
-  'Daniel',
-  'Hernández',
-  1024544253,
-  'daguiheso@test.com',
-  22,
-  3116710256,
-  new Date()
-);
-
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
@@ -20,7 +10,7 @@ const stud = new Student(
 
 export class StudentListComponent implements OnInit, AfterViewInit {
 
-  students: Student[] = new Array(10).fill(stud);
+  students: Student[] = [];
 
   // Config students table
   studentColumns = [
@@ -41,7 +31,9 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+  constructor() {
+    this.students = JSON.parse(localStorage.getItem('students')) || [];
+  }
 
   ngOnInit() {
   }
