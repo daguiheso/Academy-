@@ -1,10 +1,10 @@
 .tableContainer {
-  &.students {
+  &.subjects {
     min-height: 300px;
   }
 }
 .mat-table {
-  @media screen and (max-width: 981px) {
+  @media screen and (max-width: 600px) {
     > .mat-header-row, > .mat-row {
       > .mat-header-cell, > .mat-cell {
         flex: 0 0 150px;

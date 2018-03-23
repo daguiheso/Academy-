@@ -40,8 +40,8 @@ export class StudentFormComponent implements OnInit {
 
   onSubmit() {
     if (this.studentForm.valid) {
-      const { firstName, lastName, documentNumber, email, age } = this.studentForm.value;
-      const student = new Student(firstName, lastName, documentNumber, email, age, new Date());
+      const { firstName, lastName, documentNumber, email, age, cell } = this.studentForm.value;
+      const student = new Student(firstName, lastName, documentNumber, email, age, cell, new Date());
       console.log(student);
     }
   }

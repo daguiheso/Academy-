@@ -1,0 +1,39 @@
+<div class="box">
+  <nav class="box__nav">
+    <i (click)="goToCreate()" class="material-icons">add_circle_outline</i>
+    <i (click)="goToEdit()" class="material-icons">mode_edit</i>
+    <i (click)="delete()" class="material-icons">delete</i>
+  </nav>
+  <h2 class="title">Materias</h2>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <div class="tableContainer mat-elevation-z3 subjects">
+    <div class="loading-shade" *ngIf="isLoadingResults">
+      <mat-spinner></mat-spinner>
+    </div>
+    <mat-table [dataSource]="dataSubjects" matSort>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="credits">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Creditos </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.credits}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="dependency">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Prerequisitos </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.dependency}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="createdAt">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Creado </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.createdAt | date:'longDate'}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="subjectColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: subjectColumns; let i = index" (click)="selectRow(i, row)" [ngClass]="{ active : i == currentRowSelect}"></mat-row>
+    </mat-table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 50, 100]"></mat-paginator>
+</div>
