@@ -1,0 +1,38 @@
+<div class="box">
+  <h2 class="title">Materias</h2>
+  <div class="content">
+    <mat-list>
+      <h3 mat-subheader>Arrastre y suelte</h3>
+      <mat-list-item draggable *ngFor="let subject of subjects" [dragData]="subject">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{subject.name}}</h4>
+        <p mat-line>Creditos: {{subject.credits}}</p>
+        <p mat-line> {{subject.createdAt | date}} </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </div>
+
+  <h2 class="title">Asignadas</h2>
+  <div class="content">
+    <mat-list droppable (onDrop)="onItemDrop($event)">
+      <h3 mat-subheader>Suelte aquí las materias a inscribir</h3>
+      <mat-list-item *ngFor="let subject of selectSubjects">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{subject.name}}</h4>
+        <p mat-line> {{subject.createdAt | date}} </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </div>
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form">
+    <div class="form__bottom">
+      <button type="submit" mat-raised-button color="accent">
+        <ng-container>
+          Guardar
+        </ng-container>
+      </button>
+    </div>
+  </form>
+</div>

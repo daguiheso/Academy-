@@ -34,7 +34,13 @@ export class SubjectFormComponent implements OnInit {
   onSubmit() {
     if (this.subjectForm.valid) {
       const { name, credits, dependency } = this.subjectForm.value;
-      const subject = new Subject(null, name, credits, dependency, new Date());
+      const subject = new Subject(
+        name,
+        credits,
+        dependency,
+        new Date(),
+        new Date().getTime().toString()
+      );
       this.subjects.push(subject);
       localStorage.setItem('subjects', JSON.stringify(this.subjects));
     }

@@ -2,6 +2,7 @@
   <nav class="box__nav">
     <i [routerLink]="['new']" class="material-icons">add_circle_outline</i>
     <i (click)="goToEdit()" *ngIf="currentRowSelect >= 0" class="material-icons">mode_edit</i>
+    <i (click)="assignSubjects()" *ngIf="currentRowSelect >= 0" class="material-icons">assignment</i>
   </nav>
   <h2 class="title">Estudiantes</h2>
   <mat-form-field>
@@ -9,9 +10,6 @@
   </mat-form-field>
 
   <div class="tableContainer mat-elevation-z3 students">
-    <div class="loading-shade" *ngIf="isLoadingResults">
-      <mat-spinner></mat-spinner>
-    </div>
     <mat-table [dataSource]="dataStudents" matSort>
       <ng-container matColumnDef="firstName">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>

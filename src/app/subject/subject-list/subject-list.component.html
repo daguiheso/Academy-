@@ -10,9 +10,6 @@
   </mat-form-field>
 
   <div class="tableContainer mat-elevation-z3 subjects">
-    <div class="loading-shade" *ngIf="isLoadingResults">
-      <mat-spinner></mat-spinner>
-    </div>
     <mat-table [dataSource]="dataSubjects" matSort>
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
