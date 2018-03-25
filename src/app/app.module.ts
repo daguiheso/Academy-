@@ -19,6 +19,10 @@ import { SubjectFormComponent } from './subject/subject-form/subject-form.compon
 import { SubjectListComponent } from './subject/subject-list/subject-list.component';
 import { StudentSubjectsComponent } from './student/student-subjects/student-subjects.component';
 
+import { StudentsService } from './student/services/students.service';
+import { TeachersService } from './teacher/services/teachers.service';
+import { SubjectsService } from './subject/services/subjects.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +42,7 @@ import { StudentSubjectsComponent } from './student/student-subjects/student-sub
     AppRoutingModule,
     NgDragDropModule.forRoot()
   ],
-  providers: [],
+  providers: [StudentsService, TeachersService, SubjectsService],
   bootstrap: [AppComponent]
 })
 

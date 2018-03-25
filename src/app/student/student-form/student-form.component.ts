@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Student } from '../student.model';
+import { StudentsService } from '../services/students.service';
 
 @Component({
   selector: 'app-student-form',
@@ -13,32 +15,37 @@ export class StudentFormComponent implements OnInit {
 
   studentForm: FormGroup;
   student: Student;
-  students: Student[] = [];
-  new: boolean = true;
+  new: boolean;
 
-  constructor(private route: ActivatedRoute) {
-    this.students = JSON.parse(localStorage.getItem('students')) || [];
-    this.student = {
-      firstName: '',
-      lastName: '',
-      documentNumber: null,
-      email: '',
-      age: null,
-      cell: null,
-      subjects: []
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private studentsService: StudentsService
+  ) {
+    // Update student
+    if (this.route.snapshot.routeConfig.path === ':id/update') {
+      this.new = false;
+
+      this.studentsService.getStudentById(this.route.snapshot.params.id)
+      .then(res => {
+        this.student = res;
+      }, error => {
+
+      })
     }
-
-    // Validation if update
-    if (this.route.snapshot.url[1]) {
-      if (this.route.snapshot.url[1].path === 'update') {
-        this.new = false;
-      }
+    // Create User
+    else if (this.route.snapshot.routeConfig.path === 'new') {
+      this.new = true;
+      this.student = {
+        firstName: '',
+        lastName: '',
+        documentNumber: null,
+        email: '',
+        age: null,
+        cell: null,
+        subjects: []
+      };
     }
-
-    let filterById = this.students.map(el => {
-      if (el._id === this.route.snapshot.params.id) this.student = el
-    });
-
   }
 
   ngOnInit() {
@@ -81,20 +88,21 @@ export class StudentFormComponent implements OnInit {
 
       // Validate if is new or update
       if (this.new) {
-        this.students.push(student);
+        this.studentsService.createStudent(student)
+          .then(res => {
+            this.router.navigate(['/students']);
+          }, error => {
+            debugger
+          })
       } else {
-        var index = null;
-        let filterById = this.students.map((el,indexOf) => {
-          if (el._id === this.route.snapshot.params.id) index = indexOf;
-        })
-        this.students[index].firstName = firstName;
-        this.students[index].lastName = lastName;
-        this.students[index].documentNumber = documentNumber;
-        this.students[index].email = email;
-        this.students[index].age = age;
-        this.students[index].cell = cell;
+        this.studentsService.updateStudent(this.route.snapshot.params.id, student)
+          .then(res => {
+            debugger
+            this.router.navigate(['/students']);
+          }, error => {
+            debugger
+          })
       }
-      localStorage.setItem('students', JSON.stringify(this.students));
     }
   }
 

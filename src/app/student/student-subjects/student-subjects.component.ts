@@ -13,7 +13,6 @@ export class StudentSubjectsComponent implements OnInit {
   subjects: Subject[] = [];
   selectSubjects: Subject[] = [];
 
-
   onItemDrop(e: any) {
     // Get the dropped data here
     this.selectSubjects.push(e.dragData);

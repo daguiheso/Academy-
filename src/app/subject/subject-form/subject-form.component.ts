@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+
 import { Subject } from '../subject.model';
+import { SubjectsService } from '../services/subjects.service';
 
 @Component({
   selector: 'app-subject-form',
@@ -13,9 +17,10 @@ export class SubjectFormComponent implements OnInit {
   subjectForm: FormGroup;
   subjects: Subject[];
 
-  constructor() {
-    this.subjects = JSON.parse(localStorage.getItem('subjects')) || [];
-  }
+  constructor(
+    private router: Router,
+    private subjectsService: SubjectsService
+  ) { }
 
   ngOnInit() {
     this.subjectForm = new FormGroup({
@@ -25,7 +30,7 @@ export class SubjectFormComponent implements OnInit {
       credits: new FormControl(null, [
         Validators.required
       ]),
-      dependency: new FormControl(null, [
+      dependency: new FormControl(false, [
         Validators.required
       ])
     })
@@ -41,8 +46,13 @@ export class SubjectFormComponent implements OnInit {
         new Date(),
         new Date().getTime().toString()
       );
-      this.subjects.push(subject);
-      localStorage.setItem('subjects', JSON.stringify(this.subjects));
+
+      this.subjectsService.createSubject(subject)
+        .then(res => {
+          this.router.navigate(['/subjects']);
+        }, error => {
+          debugger
+        })
     }
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Subject } from '../subject.model';
+import { SubjectsService } from '../services/subjects.service';
 
 @Component({
   selector: 'app-subject-list',
@@ -28,8 +29,15 @@ export class SubjectListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
-    this.subjects = JSON.parse(localStorage.getItem('subjects')) || [];
+  constructor(
+    private subjectsService: SubjectsService
+  ) {
+    this.subjectsService.getSubjects()
+      .then(res => {
+        this.subjects = res;
+      }, error => {
+        debugger
+      })
   }
 
   ngOnInit() {

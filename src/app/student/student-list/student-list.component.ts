@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { Student } from '../student.model';
+import { StudentsService } from '../services/students.service';
 
 @Component({
   selector: 'app-student-list',
@@ -32,8 +33,14 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private router: Router,) {
-    this.students = JSON.parse(localStorage.getItem('students')) || [];
+  constructor(private router: Router, private studentsService: StudentsService) {
+    // this.students = JSON.parse(localStorage.getItem('students')) || [];
+    this.studentsService.getStudents()
+      .then(res => {
+        this.students = res;
+      }, error => {
+        debugger
+      })
   }
 
   ngOnInit() {

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { Teacher } from '../teacher.model';
+import { TeachersService } from '../services/teachers.service';
 
 @Component({
   selector: 'app-teacher-form',
@@ -13,9 +16,10 @@ export class TeacherFormComponent implements OnInit {
   teacherForm: FormGroup;
   teachers: Teacher[] = [];
 
-  constructor() {
-    this.teachers = JSON.parse(localStorage.getItem('teachers')) || [];
-  }
+  constructor(
+    private router: Router,
+    private teachersService: TeachersService
+  ) { }
 
   ngOnInit() {
     this.teacherForm = new FormGroup({
@@ -44,9 +48,22 @@ export class TeacherFormComponent implements OnInit {
   onSubmit() {
     if (this.teacherForm.valid) {
       const { firstName, lastName, documentNumber, email, age, specialty } = this.teacherForm.value;
-      const teacher = new Teacher(firstName, lastName, documentNumber, email, age, specialty, new Date());
-      this.teachers.push(teacher);
-      localStorage.setItem('teachers', JSON.stringify(this.teachers));
+      const teacher = new Teacher(
+        firstName,
+        lastName,
+        documentNumber,
+        email,
+        age,
+        specialty,
+        new Date()
+      );
+
+      this.teachersService.createTeacher(teacher)
+        .then(res => {
+          this.router.navigate(['/teachers']);
+        }, error => {
+          debugger
+        })
     }
   }
 
