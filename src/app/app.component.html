@@ -9,9 +9,9 @@
   <mat-sidenav-container class="wrapper-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [opened]="mobileQuery.matches ? false : true" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
-        <a mat-list-item routerLink="/students">Estudiantes</a>
-        <a mat-list-item routerLink="/subjects">Materias</a>
-        <a mat-list-item routerLink="/teachers">Profesores</a>
+        <a mat-list-item (click)="mobileQuery.matches ? snav.toggle() : null" routerLink="/students">Estudiantes</a>
+        <a mat-list-item (click)="mobileQuery.matches ? snav.toggle() : null" routerLink="/subjects">Materias</a>
+        <a mat-list-item (click)="mobileQuery.matches ? snav.toggle() : null" routerLink="/teachers">Profesores</a>
       </mat-nav-list>
     </mat-sidenav>
 
