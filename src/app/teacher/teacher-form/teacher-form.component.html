@@ -20,7 +20,12 @@
       <input matInput placeholder="Especialidad" type="text" formControlName="specialty" id="specialty">
     </mat-form-field>
     <div class="form__bottom">
-      <button type="submit" mat-raised-button color="accent">Crear profesor</button>
+      <div class="button-row">
+        <button type="submit" mat-raised-button color="primary">Crear profesor</button>
+        <a [routerLink]="['/teachers']" mat-raised-button color="accent">
+          Cancelar
+        </a>
+      </div>
     </div>
   </form>
 </div>

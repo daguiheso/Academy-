@@ -21,14 +21,19 @@
       <input matInput placeholder="Celular" type="number" formControlName="cell" id="cell">
     </mat-form-field>
     <div class="form__bottom">
-      <button type="submit" mat-raised-button color="accent">
-        <ng-container *ngIf="new">
-          Crear estudiante
-        </ng-container>
-        <ng-container *ngIf="!new">
-          Guardar
-        </ng-container>
-      </button>
+      <div class="button-row">
+        <button type="submit" mat-raised-button color="primary">
+          <ng-container *ngIf="new">
+            Crear estudiante
+          </ng-container>
+          <ng-container *ngIf="!new">
+            Guardar
+          </ng-container>
+        </button>
+        <a [routerLink]="['/students']" mat-raised-button color="accent">
+          Cancelar
+        </a>
+      </div>
     </div>
   </form>
 </div>

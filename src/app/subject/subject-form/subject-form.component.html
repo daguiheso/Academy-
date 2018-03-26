@@ -12,7 +12,12 @@
       <mat-slide-toggle formControlName="dependency" id="dependency">Prerequisitos ?</mat-slide-toggle>
     </div>
     <div class="form__bottom">
-      <button type="submit" mat-raised-button color="accent">Crear materia</button>
+      <div class="button-row">
+        <button type="submit" mat-raised-button color="primary">Crear materia</button>
+        <a [routerLink]="['/subjects']" mat-raised-button color="accent">
+          Cancelar
+        </a>
+      </div>
     </div>
   </form>
 </div>
