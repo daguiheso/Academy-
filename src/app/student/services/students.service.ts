@@ -58,7 +58,6 @@ export class StudentsService {
   }
 
   assignSubjectsToStudent(id: string, student: Student) {
-    debugger
     return new Promise((resolve, reject) => {
       let indexEst = null;
       this.students.map((el, index) => {

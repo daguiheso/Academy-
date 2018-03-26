@@ -9,6 +9,9 @@
     <span matTooltip="Asignar materias">
       <i (click)="assignSubjects()" *ngIf="currentRowSelect >= 0" class="material-icons">assignment</i>
     </span>
+    <span matTooltip="Notas">
+      <i (click)="assignNotes()" class="material-icons" *ngIf="currentRowSelect >= 0">content_paste</i>
+    </span>
   </nav>
   <h2 class="title">Estudiantes</h2>
   <mat-form-field>

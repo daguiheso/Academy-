@@ -1,0 +1,57 @@
+<div class="box">
+  <h4 class="box__name">{{student.firstName}} {{student.lastName}}</h4>
+  <hr>
+  <h2 class="title">Registro de notas</h2>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <form #requestForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="tableContainer mat-elevation-z3 subjects">
+      <mat-table [dataSource]="dataSubjects" matSort>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="firstNote">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nota 1 Periodo </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <input
+              type="number"
+              name="note-first-{{row.createdAt}}"
+              class="inputNumber"
+              [(ngModel)]="row.firstNote"
+              min="0" max="5"
+            >
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="secondNote">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nota 2 Periodo </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <input
+              type="number"
+              name="note-second-{{row.createdAt}}"
+              class="inputNumber"
+              [(ngModel)]="row.secondNote"
+              min="0" max="5"
+            >
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="subjectColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: subjectColumns;"></mat-row>
+      </mat-table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 50, 100]"></mat-paginator>
+    <div class="form__bottom">
+      <div class="button-row">
+        <button type="submit" mat-raised-button color="primary">
+          Guardar
+        </button>
+        <a [routerLink]="['/students']" mat-raised-button color="accent">
+          Cancelar
+        </a>
+      </div>
+    </div>
+  </form>
+</div>

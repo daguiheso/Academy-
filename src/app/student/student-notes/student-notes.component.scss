@@ -1,0 +1,44 @@
+.mat-table {
+	> .mat-header-row, > .mat-row {
+		&:hover {
+			background: none;
+			.mat-header-cell, .mat-cell {
+				background: none;
+			}
+		}
+		> .mat-header-cell, > .mat-cell {
+			&:hover {
+				background: none;
+			}
+			&:nth-child(1) {
+				flex: 0 0 200px;
+			}
+			.inputNumber {
+				border-radius: 3px;
+				padding: 8px;
+				width: 40px;
+			}
+		}
+	}
+  @media screen and (max-width: 600px) {
+    > .mat-header-row, > .mat-row {
+      > .mat-header-cell, > .mat-cell {
+				&:nth-child(1) {
+					flex: 0 0 50%;
+				}
+				&:nth-child(2),
+				&:nth-child(3) {
+					flex: 0 0 90px;
+				}
+      }
+    }
+  }
+}
+.tableContainer {
+  &.subjects {
+    min-height: 60px;
+  }
+}
+.form__bottom {
+	margin-top: 20px;
+}

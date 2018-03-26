@@ -73,4 +73,8 @@ export class StudentListComponent implements OnInit, AfterViewInit {
     this.router.navigate([`students/${this.currentRowSelectData._id}/subjects`]);
   }
 
+  assignNotes() {
+    this.router.navigate([`students/${this.currentRowSelectData._id}/notes`]);
+  }
+
 }

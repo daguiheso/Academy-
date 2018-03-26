@@ -19,6 +19,10 @@ input {
 .box {
   position: relative;
   padding-top: 40px;
+  &__name {
+		margin: 0;
+    text-align: right;
+	}
 	&__nav {
 		position: fixed;
 		left: 0;
