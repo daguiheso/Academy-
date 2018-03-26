@@ -25,6 +25,7 @@ import { TeachersService } from './teacher/services/teachers.service';
 import { SubjectFormComponent } from './subject/subject-form/subject-form.component';
 import { SubjectListComponent } from './subject/subject-list/subject-list.component';
 import { SubjectsService } from './subject/services/subjects.service';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { SubjectsService } from './subject/services/subjects.service';
     AppRoutingModule,
     NgDragDropModule.forRoot()
   ],
-  providers: [StudentsService, TeachersService, SubjectsService],
+  providers: [StudentsService, TeachersService, SubjectsService, AppService],
   bootstrap: [AppComponent]
 })
 

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { Student } from '../student.model';
 import { StudentsService } from '../services/students.service';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-student-list',
@@ -34,8 +35,11 @@ export class StudentListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private router: Router, private studentsService: StudentsService) {
-    // this.students = JSON.parse(localStorage.getItem('students')) || [];
+  constructor(
+    private router: Router,
+    private studentsService: StudentsService,
+    private appService: AppService
+  ) {
     this.studentsService.getStudents()
       .then(res => {
         this.students = res;
@@ -75,6 +79,10 @@ export class StudentListComponent implements OnInit, AfterViewInit {
 
   assignNotes() {
     this.router.navigate([`students/${this.currentRowSelectData._id}/notes`]);
+  }
+
+  generateReport() {
+    this.appService.exportAsExcelFile(this.students, 'reporte');
   }
 
 }
