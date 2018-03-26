@@ -53,4 +53,16 @@ export class TeachersService {
     })
   }
 
+  deleteTeacher(id: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.teachers.map((el, indexOf) => {
+        if (el._id === id) {
+          this.teachers.splice(indexOf, 1);
+        }
+      });
+      localStorage.setItem('teachers', JSON.stringify(this.teachers));
+      resolve({ status: 200 });
+    })
+  }
+
 }

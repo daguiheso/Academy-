@@ -71,4 +71,21 @@ export class TeacherListComponent implements OnInit, AfterViewInit {
     this.router.navigate([`teachers/${this.currentRowSelectData._id}/subjects`]);
   }
 
+  delete() {
+    this.teachersService.deleteTeacher(this.currentRowSelectData._id)
+      .then(res => {
+        this.teachersService.getTeachers()
+          .then(res => {
+            this.teachers = res;
+            this.dataTeachers = new MatTableDataSource(this.teachers);
+            this.dataTeachers.paginator = this.paginator;
+            this.dataTeachers.sort = this.sort;
+            this.isLoadingStudents = false;
+          }, error => {
+            debugger
+          })
+      }, error => {
+        debugger
+      })
+  }
 }
