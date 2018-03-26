@@ -1,4 +1,5 @@
 import { ITeacher } from "../interfaces";
+import { Subject } from "../subject/subject.model";
 
 export class Teacher implements ITeacher {
 
@@ -9,7 +10,8 @@ export class Teacher implements ITeacher {
 	email: string;
 	age: number;
 	specialty: string;
-	createdAt?: Date;
+	createdAt?: Date
+	subjects?: Subject[];;
 
 	constructor(
 		firstName: string,
@@ -18,9 +20,11 @@ export class Teacher implements ITeacher {
 		email: string,
 		age: number,
 		specialty: string,
-		createdAt?: Date
+		createdAt?: Date,
+		_id?: string,
+		subjects?: Subject[]
 	) {
-		this._id = '1';
+		this._id = _id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.documentNumber = documentNumber;
@@ -28,5 +32,6 @@ export class Teacher implements ITeacher {
 		this.age = age;
 		this.specialty = specialty;
 		this.createdAt = createdAt;
+		this.subjects = subjects || [];
 	}
 }

@@ -22,6 +22,7 @@ import { StudentSubjectsComponent } from './student/student-subjects/student-sub
 import { StudentsService } from './student/services/students.service';
 import { TeachersService } from './teacher/services/teachers.service';
 import { SubjectsService } from './subject/services/subjects.service';
+import { TeacherSubjectsComponent } from './teacher/teacher-subjects/teacher-subjects.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SubjectsService } from './subject/services/subjects.service';
     TeacherListComponent,
     SubjectFormComponent,
     SubjectListComponent,
-    StudentSubjectsComponent
+    StudentSubjectsComponent,
+    TeacherSubjectsComponent
   ],
   imports: [
     BrowserModule,

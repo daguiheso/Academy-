@@ -20,9 +20,34 @@ export class TeachersService {
     })
   }
 
+  getTeacherById(id: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let teacher;
+      this.teachers.map(el => {
+        if (el._id === id) teacher = el;
+      });
+
+      if (teacher) resolve(teacher);
+      else reject({ message: 'Not return id teacher' });
+    })
+  }
+
   createTeacher(teacher: Teacher): Promise<any> {
     return new Promise((resolve, reject) => {
       this.teachers.push(teacher);
+      localStorage.setItem('teachers', JSON.stringify(this.teachers));
+      resolve({ status: 200 });
+    })
+  }
+
+  assignSubjectsToTeacher(id: string, teacher: Teacher) {
+    return new Promise((resolve, reject) => {
+      let indexEst = null;
+      this.teachers.map((el, index) => {
+        if (el._id === id) indexEst = index;
+      });
+      this.teachers[indexEst].subjects = teacher.subjects;
+
       localStorage.setItem('teachers', JSON.stringify(this.teachers));
       resolve({ status: 200 });
     })

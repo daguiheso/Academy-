@@ -55,7 +55,8 @@ export class TeacherFormComponent implements OnInit {
         email,
         age,
         specialty,
-        new Date()
+        new Date(),
+        new Date().getTime().toString()
       );
 
       this.teachersService.createTeacher(teacher)

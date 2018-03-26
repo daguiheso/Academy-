@@ -2,20 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Student } from '../student.model';
+import { Teacher } from '../teacher.model';
 import { Subject } from '../../subject/subject.model';
 import { SubjectsService } from '../../subject/services/subjects.service';
-import { StudentsService } from '../services/students.service';
+import { TeachersService } from '../services/teachers.service';
+
 
 @Component({
-  selector: 'app-student-subjects',
-  templateUrl: './student-subjects.component.html',
-  styleUrls: ['./student-subjects.component.scss']
+  selector: 'app-teacher-subjects',
+  templateUrl: './teacher-subjects.component.html',
+  styleUrls: ['./teacher-subjects.component.scss']
 })
 
-export class StudentSubjectsComponent implements OnInit {
+export class TeacherSubjectsComponent implements OnInit {
 
-  student: Student;
+  teacher: Teacher;
   subjects: Subject[] = [];
   selectSubjects: Subject[] = [];
 
@@ -23,15 +24,15 @@ export class StudentSubjectsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private subjectsService: SubjectsService,
-    private studentsService: StudentsService
+    private teacherService: TeachersService
   ) {
     this.subjectsService.getSubjects()
       .then(res => {
         this.subjects = res;
 
-        this.studentsService.getStudentById(this.route.snapshot.params.id)
+        this.teacherService.getTeacherById(this.route.snapshot.params.id)
           .then(res => {
-            this.student = res;
+            this.teacher = res;
             res.subjects.map(item => {
               this.selectSubjects.push(item);
               this.deleteSubject(item);
@@ -42,7 +43,6 @@ export class StudentSubjectsComponent implements OnInit {
       }, error => {
         debugger
       })
-
   }
 
   ngOnInit() {
@@ -63,21 +63,21 @@ export class StudentSubjectsComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    const student = new Student(
-      this.student.firstName,
-      this.student.lastName,
-      this.student.documentNumber,
-      this.student.email,
-      this.student.age,
-      this.student.cell,
+    const teacher = new Teacher(
+      this.teacher.firstName,
+      this.teacher.lastName,
+      this.teacher.documentNumber,
+      this.teacher.email,
+      this.teacher.age,
+      this.teacher.specialty,
       new Date(),
       new Date().getTime().toString(),
       this.selectSubjects
     );
 
-    this.studentsService.assignSubjectsToStudent(this.route.snapshot.params.id, student)
+    this.teacherService.assignSubjectsToTeacher(this.route.snapshot.params.id, teacher)
       .then(res => {
-        this.router.navigate(['/students']);
+        this.router.navigate(['/teachers']);
       }, error => {
         debugger
       })

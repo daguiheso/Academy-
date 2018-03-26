@@ -2,6 +2,7 @@
   <nav class="box__nav">
     <i [routerLink]="['new']" class="material-icons">add_circle_outline</i>
     <i (click)="delete()" *ngIf="currentRowSelect >= 0" class="material-icons">delete</i>
+    <i (click)="assignSubjects()" *ngIf="currentRowSelect >= 0" class="material-icons">assignment</i>
   </nav>
   <h2 class="title">Profesores</h2>
   <mat-form-field>

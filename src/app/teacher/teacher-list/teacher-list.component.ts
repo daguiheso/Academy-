@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
+
 import { Teacher } from '../teacher.model';
 import { TeachersService } from '../services/teachers.service';
 
@@ -33,6 +35,7 @@ export class TeacherListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
+    private router: Router,
     private teachersService: TeachersService
   ) {
     this.teachersService.getTeachers()
@@ -62,6 +65,10 @@ export class TeacherListComponent implements OnInit, AfterViewInit {
   selectRow(index, data) {
     this.currentRowSelect = index;
     this.currentRowSelectData = data;
+  }
+
+  assignSubjects() {
+    this.router.navigate([`teachers/${this.currentRowSelectData._id}/subjects`]);
   }
 
 }

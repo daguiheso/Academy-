@@ -32,6 +32,6 @@ export class Student implements IStudent {
 		this.age = age;
 		this.cell = cell;
 		this.createdAt = createdAt;
-		this.subjects = subjects;
+		this.subjects = subjects || [];
 	}
 }
