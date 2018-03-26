@@ -57,4 +57,18 @@ export class StudentsService {
     })
   }
 
+  assignSubjectsToStudent(id: string, student: Student) {
+    debugger
+    return new Promise((resolve, reject) => {
+      let indexEst = null;
+      this.students.map((el, index) => {
+        if (el._id === id) indexEst = index;
+      });
+      this.students[indexEst].subjects = student.subjects;
+
+      localStorage.setItem('students', JSON.stringify(this.students));
+      resolve({ status: 200 });
+    })
+  }
+
 }

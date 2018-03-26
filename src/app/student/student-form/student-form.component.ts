@@ -30,7 +30,7 @@ export class StudentFormComponent implements OnInit {
       .then(res => {
         this.student = res;
       }, error => {
-
+        debugger
       })
     }
     // Create User
@@ -97,7 +97,6 @@ export class StudentFormComponent implements OnInit {
       } else {
         this.studentsService.updateStudent(this.route.snapshot.params.id, student)
           .then(res => {
-            debugger
             this.router.navigate(['/students']);
           }, error => {
             debugger

@@ -15,6 +15,7 @@ export class SubjectsService {
 
   getSubjects(): Promise<any> {
     return new Promise((resolve, reject) => {
+      this.subjects = JSON.parse(localStorage.getItem('subjects')) || [];
       if (this.subjects) resolve(this.subjects)
       else reject({ message: 'Not exist subjects' });
     })

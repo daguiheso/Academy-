@@ -11,7 +11,7 @@ export class Student implements IStudent {
 	age: number;
 	cell: number;
 	createdAt?: Date;
-	subjects: Subject[];
+	subjects?: Subject[];
 
 	constructor(
 		firstName: string,
@@ -21,7 +21,8 @@ export class Student implements IStudent {
 		age: number,
 		cell: number,
 		createdAt?: Date,
-		_id?: string
+		_id?: string,
+		subjects?: Subject[]
 	) {
 		this._id = _id;
 		this.firstName = firstName;
@@ -31,6 +32,6 @@ export class Student implements IStudent {
 		this.age = age;
 		this.cell = cell;
 		this.createdAt = createdAt;
-		this.subjects = [];
+		this.subjects = subjects;
 	}
 }
